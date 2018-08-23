@@ -66,13 +66,7 @@
     </header>
 
     <!-- About Section -->
-    <section id="about" class="about-section text-center">
-    
-    <c:forEach items="${ peliculas }" var="pelicula">
-			<li>${pelicula.toString()}</li>
-	</c:forEach></ul>
-			
-			
+    <section id="about" class="about-section text-center">		
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
@@ -112,7 +106,14 @@
               <div class="d-flex h-100">
                 <div class="project-text w-100 my-auto text-center text-lg-left">
                   <h4 class="text-white">Misty</h4>
-                  <p class="mb-0 text-white-50">An example of where you can put an image of a project, or anything else, along with a description.</p>
+                  <p class="mb-0 text-white-50">
+                  
+                  
+                  An example of where you can put an image of a project, or anything else, along with a description.
+                 	<c:forEach items="${ peliculas }" var="pelicula">
+						<li>${pelicula.toString()}</li>
+					</c:forEach></ul>
+                  </p>
                   <hr class="d-none d-lg-block mb-0 ml-0">
                 </div>
               </div>

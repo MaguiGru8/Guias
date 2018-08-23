@@ -1,20 +1,33 @@
-package unae.lp3.models;
+package unae.lp3.app.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table (name="peliculas")
 public class Pelicula {
+  
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String titulo;
 	private int duracion;
 	private String clasificacion;
 	private String genero;
-	private String imagen = "ipad.png"; // imagen por default	
+	private String imagen = "cinema.png"; // imagen por default	
 	private Date fechaEstreno;	
 	private String estatus="Activa";
+	// Constructore
+
 	
-	public Pelicula(int i, String string, int j, String string2, String string3, String string4) {
-		// TODO Auto-generated constructor stub
-	}
+
+	// Getters y Setters
 	public int getId() {
 		return id;
 	}
@@ -54,15 +67,25 @@ public class Pelicula {
 	public Date getFechaEstreno() {
 		return fechaEstreno;
 	}
-	public void setFechaEstreno(Date fechaEstreno) {
-		this.fechaEstreno = fechaEstreno;
+	
+	public void setFechaEstreno(String fechaEstreno) {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+		this.fechaEstreno = formatter.parse(fechaEstreno);
+		} catch (ParseException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
 	}
+	
+	
 	public String getEstatus() {
 		return estatus;
 	}
 	public void setEstatus(String estatus) {
 		this.estatus = estatus;
 	}
+	
+	// toString
 	@Override
 	public String toString() {
 		return "Pelicula [id=" + id + ", titulo=" + titulo + ", duracion=" + duracion + ", clasificacion="
@@ -70,5 +93,4 @@ public class Pelicula {
 				+ ", estatus=" + estatus + "]";
 	}
 	
-
 }
